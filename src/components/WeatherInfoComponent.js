@@ -15,9 +15,10 @@ const WeatherInfoComponent = (props) => {
 
 export default WeatherInfoComponent;
 
-export const WeatherInfoIcons={
-    'Feels like':'https://www.freeiconspng.com/thumbs/temperature-icon-png/temperature-icon-png-1.png',
-    'Humidity':'https://cdn-icons-png.flaticon.com/512/1582/1582886.png',
+export const WeatherInfoIcons = {
+  "Feels like":
+    "https://www.freeiconspng.com/thumbs/temperature-icon-png/temperature-icon-png-1.png",
+  Humidity: "https://cdn-icons-png.flaticon.com/512/1582/1582886.png",
 };
 
 const InfoContainer = styled.div`

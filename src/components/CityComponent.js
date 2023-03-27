@@ -1,19 +1,21 @@
 import React from "react";
 import styled from "styled-components";
+import { FiSearch } from "react-icons/fi";
 
 const CityComponent = (props) => {
-  const { setCity,fetchWeather } = props;
+  const { setCity, fetchWeather,city } = props;
   return (
     <>
-      <WeatherLogo src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7Lqks38gMVkMfuUhMhx4dEKokWla9vqUQCA&usqp=CAU"></WeatherLogo>
+      <WeatherLogo src="https://www.freeiconspng.com/thumbs/weather-icon-png/weather-icon-png-25.png"></WeatherLogo>
       <CityLabel>Find Weather Of Your City</CityLabel>
       <SearchBox onSubmit={fetchWeather}>
         <input
           type="text"
           placeholder="city"
+          value={city}
           onChange={(e) => setCity(e.target.value)}
         />
-        <button type='submit'>Search</button>
+        <button type="submit"><FiSearch/></button>
       </SearchBox>
     </>
   );
@@ -53,10 +55,9 @@ const SearchBox = styled.form`
 
   & button {
     padding: 10px;
-    font-size: 14px;
+    font-size: 18px;
     border: none;
     outline: none;
-    font-weight: bold;
     color: white;
     background-color: black;
     cursor: pointer;

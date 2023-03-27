@@ -1,22 +1,30 @@
 import React from "react";
 import styled from "styled-components";
 import WeatherInfoComponent from "./WeatherInfoComponent";
+import { ImLocation2 } from "react-icons/im";
 
 const WeatherInfo = (props) => {
-  const {weather}=props;
+  const { weather ,setFound} = props;
   return (
     <>
       <WeatherCondition>
-        <WeatherLogo src={`https://openweathermap.org/img/wn/${weather?.weather[0].icon}@2x.png`} />
+        <button onClick={(e)=>setFound(false)}>back</button>
+        <WeatherLogo
+          src={`https://openweathermap.org/img/wn/${weather?.weather[0].icon}@2x.png`}
+        />
       </WeatherCondition>
-      <Temperature>{`${Math.floor(weather?.main?.temp-273)}°C`}</Temperature>
+      <Temperature>{`${Math.floor(weather?.main?.temp - 273)}°C`}</Temperature>
       <Condition>{weather?.weather[0]?.description}</Condition>
-      <Location>{`${weather?.name},${weather?.sys?.country}`}</Location>
-      {/* <Divide /> */}
+      <Location><ImLocation2/> {`${weather?.name},${weather?.sys?.country}`}</Location>
       <WeatherInfoContainer>
-        <WeatherInfoComponent name="Feels like" value={`${Math.floor(weather?.main?.feels_like-273)}°C`} />
-        <Line />
-        <WeatherInfoComponent name="Humidity" value={`${weather?.main?.humidity}%` }/>
+        <WeatherInfoComponent
+          name="Feels like"
+          value={`${Math.floor(weather?.main?.feels_like - 273)}°C`}
+        />
+        <WeatherInfoComponent
+          name="Humidity"
+          value={`${weather?.main?.humidity}%`}
+        />
       </WeatherInfoContainer>
     </>
   );
@@ -48,10 +56,9 @@ const Location = styled.span`
   font-weight: 50;
 `;
 const WeatherLogo = styled.img`
-  width: 130px;
-  height: 130px;
-  margin:auto;
-  
+  width: 150px;
+  height: 150px;
+  margin: auto;
 `;
 
 const WeatherInfoContainer = styled.div`
@@ -65,7 +72,4 @@ const WeatherInfoContainer = styled.div`
   border: 1px solid grey;
 `;
 
-const Line = styled.div`
-  border: 1px solid black;
-  height: 16vh;
-`;
+

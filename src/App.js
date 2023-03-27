@@ -2,34 +2,46 @@ import axios from "axios";
 import { useState } from "react";
 import styled from "styled-components";
 import CityComponent from "./components/CityComponent";
+import CurrentLocation from "./components/CurrentLocation";
 import WeatherInfo from "./components/WeatherInfo";
 
 const API_KEY = "13ec29720fa55c2c114c53a3a9694387";
 
 function App() {
-  const [city, setCity] = useState();
-  const [weather, setWeather] = useState();
-
+  const [city, setCity] = useState('');
+  const [weather, setWeather] = useState(null);
+  const [found, setFound] = useState(false)
   const fetchWeather = async (e) => {
     e.preventDefault();
-    const response = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
-    );
-    setWeather(response.data);
+    try{
+      const response = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
+      );
+      setWeather(response.data);
+      console.log(response.data)
+      setFound(true);
+    }
+    catch{
+      setFound(false);
+    }
+    
   };
-  return (
-    <Container>
-      <AppLabel>Weather App</AppLabel>
 
-      {weather ? (
-        <WeatherInfo weather={weather}/>
-      ) : (
-        <CityComponent setCity={setCity} fetchWeather={fetchWeather} />
-      )}
-    </Container>
+  return (
+      <Container>
+        <AppLabel>Weather App</AppLabel>
+          {weather&&found ? (
+            <WeatherInfo weather={weather} setFound={setFound} />
+          ) : (
+            <>
+            <CityComponent setCity={setCity} city={city} fetchWeather={fetchWeather} />
+            <div>or</div>
+            <CurrentLocation setCity={setCity} setFound={setFound}  />
+            </>
+          )}
+      </Container>
   );
 }
-
 export default App;
 
 const Container = styled.div`
@@ -41,8 +53,12 @@ const Container = styled.div`
   padding: 20px 10px;
   border-radius: 4px;
   width: 380px;
-  background-color: white;
+  background-color: #f8f8ff;
   font-family: "DM Sans", sans-serif;
+
+  > div {
+    padding-bottom: 10px;
+  }
 `;
 
 const AppLabel = styled.span`
