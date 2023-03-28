@@ -1,8 +1,8 @@
-#Weather App
+# Weather App
 
 This is a simple weather application that displays the current weather conditions for a given location. It retrieves weather data from the OpenWeatherMap API and displays it in a user-friendly format.
 
-##Features
+## Features
 Display current weather conditions for a given location
 Display the temperature in Celsius or Fahrenheit
 Display the weather condition icon
@@ -10,7 +10,7 @@ Display the location name and country
 Display the current date and time for the location
 Display the humidity, wind speed and pressure for the location
 Ability to search for a new location and update the weather data accordingly
-##How to Use
+## How to Use
 To use the weather app, follow these steps:
 
 Clone the repository to your local machine
@@ -30,8 +30,8 @@ React
 Axios
 OpenWeatherMap API
 Bootstrap
-##Credits
+## Credits
 This weather app was built by [Your Name]. It was created as part of a coding challenge or project for [Company Name or course name].
 
-##License
+## License
 This project is licensed under the MIT License - see the LICENSE file for details.
