@@ -24,6 +24,6 @@ This weather app was built using the following technologies:
 React.\
 Axios.\
 OpenWeatherMap API.\
-Bootstrap.\
+Bootstrap
 ## Credits
-This weather app was built by [Shlok Gaikwad]. It was created as part of a coding challenge or project for [HootBoard].
+This weather app was built by [Shlok Gaikwad]. It was created as part of a coding challenge [HootBoard].
