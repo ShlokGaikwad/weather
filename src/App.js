@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import CityComponent from "./components/CityComponent";
 import CurrentLocation from "./components/CurrentLocation";
@@ -45,7 +45,9 @@ function App() {
           }}
         />
       ) : apierror && city.length > 0 ? (
-        <Error404 setApierror={setApierror} />
+        <Error404 setApierror={setApierror} BackClick={() => {
+          setCity("");
+        }}/>
       ) : (
         <>
           <CityComponent
