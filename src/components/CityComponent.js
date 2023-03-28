@@ -1,22 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { FiSearch } from "react-icons/fi";
 
 const CityComponent = (props) => {
-  const { setCity, fetchWeather,city } = props;
+  const { setCity, fetchWeather, city, weather } = props;
+
+  // const filterData=setWeather.filter((item)=>{
+  //   return item.name.toLowerCase().includes(setCity.toLowerCase());
+  // })
   return (
     <>
       <WeatherLogo src="https://www.freeiconspng.com/thumbs/weather-icon-png/weather-icon-png-25.png"></WeatherLogo>
       <CityLabel>Find Weather Of Your City</CityLabel>
-      <SearchBox onSubmit={fetchWeather}>
+      <SearchBox onSubmit={()=>fetchWeather(city)}>
         <input
           type="text"
           placeholder="city"
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
-        <button type="submit"><FiSearch/></button>
+        <button type="submit">
+          <FiSearch />
+        </button>
       </SearchBox>
+      {/* <DropDown>
+        {!setCity
+          ? "data not found"
+          : weather.map((item) => {
+              return <DropDownRow>
+
+              </DropDownRow>;
+            })}
+      </DropDown> */}
     </>
   );
 };
@@ -26,7 +41,7 @@ export default CityComponent;
 const WeatherLogo = styled.img`
   width: 140px;
   height: 140px;
-  margin: 40px auto;
+  margin: 20px auto;
 `;
 
 const CityLabel = styled.span`
@@ -63,3 +78,7 @@ const SearchBox = styled.form`
     cursor: pointer;
   }
 `;
+
+const DropDown = styled.div``;
+
+const DropDownRow = styled.div``;

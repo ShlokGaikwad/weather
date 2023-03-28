@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import CityComponent from "./components/CityComponent";
 import CurrentLocation from "./components/CurrentLocation";
@@ -8,38 +8,55 @@ import WeatherInfo from "./components/WeatherInfo";
 const API_KEY = "13ec29720fa55c2c114c53a3a9694387";
 
 function App() {
-  const [city, setCity] = useState('');
-  const [weather, setWeather] = useState(null);
-  const [found, setFound] = useState(false)
-  const fetchWeather = async (e) => {
-    e.preventDefault();
-    try{
+  const [city, setCity] = useState("");
+  const [weather, setWeather] = useState('');
+  const [found, setFound] = useState(false);
+  // const [loading, setloading] = useState(false);
+
+  // useEffect(() => {
+  //   setloading(true);
+  //   setTimeout(() => {
+  //     setloading(false);
+  //   }, 5000);
+  // }, []);
+
+  useEffect(()=>{
+    setCity("")
+  })
+
+  const fetchWeather = async (CurrCity) => {
+    // e.preventDefault();
+    try {
       const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${CurrCity}&appid=${API_KEY}`
       );
       setWeather(response.data);
-      console.log(response.data)
+
+      console.log(response.data);
       setFound(true);
-    }
-    catch{
+    } catch {
       setFound(false);
     }
-    
   };
 
   return (
-      <Container>
-        <AppLabel>Weather App</AppLabel>
-          {weather&&found ? (
-            <WeatherInfo weather={weather} setFound={setFound} />
-          ) : (
-            <>
-            <CityComponent setCity={setCity} city={city} fetchWeather={fetchWeather} />
-            <div>or</div>
-            <CurrentLocation setCity={setCity} setFound={setFound}  />
-            </>
-          )}
-      </Container>
+    <Container>
+      <AppLabel>Weather App</AppLabel>
+      {weather && found ? (
+        <WeatherInfo weather={weather} setFound={setFound} />
+      ) : (
+        <>
+          <CityComponent
+            setCity={setCity}
+            city={city}
+            fetchWeather={fetchWeather}
+            weather={weather}
+          />
+          <div>or</div>
+          <CurrentLocation setCity={setCity} setFound={setFound} fetchWeather={fetchWeather}/>
+        </>
+      )}
+    </Container>
   );
 }
 export default App;
@@ -65,4 +82,5 @@ const AppLabel = styled.span`
   color: blue;
   font-size: 18px;
   font-weight: bold;
+  margin-bottom: -22px;
 `;

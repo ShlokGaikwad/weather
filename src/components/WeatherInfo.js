@@ -2,20 +2,26 @@ import React from "react";
 import styled from "styled-components";
 import WeatherInfoComponent from "./WeatherInfoComponent";
 import { ImLocation2 } from "react-icons/im";
+import { BiArrowBack } from "react-icons/bi";
 
 const WeatherInfo = (props) => {
-  const { weather ,setFound} = props;
+  const { weather, setFound } = props;
+  console.log(weather);
   return (
     <>
+      <Back onClick={(e) => setFound(false)}>
+        <BiArrowBack />
+      </Back>
       <WeatherCondition>
-        <button onClick={(e)=>setFound(false)}>back</button>
         <WeatherLogo
           src={`https://openweathermap.org/img/wn/${weather?.weather[0].icon}@2x.png`}
         />
       </WeatherCondition>
       <Temperature>{`${Math.floor(weather?.main?.temp - 273)}°C`}</Temperature>
       <Condition>{weather?.weather[0]?.description}</Condition>
-      <Location><ImLocation2/> {`${weather?.name},${weather?.sys?.country}`}</Location>
+      <Location>
+        <ImLocation2 /> {`${weather?.name},${weather?.sys?.country}`}
+      </Location>
       <WeatherInfoContainer>
         <WeatherInfoComponent
           name="Feels like"
@@ -24,6 +30,11 @@ const WeatherInfo = (props) => {
         <WeatherInfoComponent
           name="Humidity"
           value={`${weather?.main?.humidity}%`}
+        />
+        <WeatherInfoComponent name="Wind" value={`${weather?.wind?.speed}`} />
+        <WeatherInfoComponent
+          name="pressure"
+          value={`${weather?.main?.pressure}`}
         />
       </WeatherInfoContainer>
     </>
@@ -38,7 +49,13 @@ const WeatherCondition = styled.div`
   align-items: center;
   width: 100%;
   justify-content: space-between;
-  margin: 30px auto;
+  margin: auto;
+`;
+const Back = styled.span`
+  color: blue;
+  font-size: 25px;
+  cursor: pointer;
+  margin-right: 90%;
 `;
 const Temperature = styled.div`
   margin: auto;
@@ -71,5 +88,3 @@ const WeatherInfoContainer = styled.div`
   margin-top: 30px;
   border: 1px solid grey;
 `;
-
-
