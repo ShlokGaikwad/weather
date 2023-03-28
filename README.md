@@ -7,9 +7,8 @@ Display current weather conditions for a given location.\
 Display the temperature in Celsius or Fahrenheit.\
 Display the weather condition icon.\
 Display the location name and country.\
-Display the current date and time for the location.\
-Display the humidity, wind speed and pressure for the location.\
-Ability to search for a new location and update the weather data accordingly 
+Display the humidity,feels like, wind speed and pressure for the location.\
+Ability to search for a new location and update the weather data accordingly.
 ## How to Use
 To use the weather app, follow these steps:
 
@@ -24,6 +23,6 @@ This weather app was built using the following technologies:
 React.\
 Axios.\
 OpenWeatherMap API.\
-Bootstrap
+Styled Component.
 ## Credits
-This weather app was built by [Shlok Gaikwad]. It was created as part of a coding challenge [HootBoard].
+This weather app was built by 'Shlok Gaikwad`. It was created as part of a coding challenge 'HootBoard`.
