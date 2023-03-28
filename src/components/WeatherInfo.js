@@ -5,11 +5,16 @@ import { ImLocation2 } from "react-icons/im";
 import { BiArrowBack } from "react-icons/bi";
 
 const WeatherInfo = (props) => {
-  const { weather, setFound } = props;
-  console.log(weather);
+  const { weather, setFound, BackClick } = props;
+  // console.log(weather);
   return (
     <>
-      <Back onClick={(e) => setFound(false)}>
+      <Back
+        onClick={(e) => {
+          setFound(false);
+          BackClick();
+        }}
+      >
         <BiArrowBack />
       </Back>
       <WeatherCondition>

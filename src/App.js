@@ -3,39 +3,33 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import CityComponent from "./components/CityComponent";
 import CurrentLocation from "./components/CurrentLocation";
+import Error404 from "./components/Error404";
 import WeatherInfo from "./components/WeatherInfo";
 
 const API_KEY = "13ec29720fa55c2c114c53a3a9694387";
 
 function App() {
   const [city, setCity] = useState("");
-  const [weather, setWeather] = useState('');
+  const [weather, setWeather] = useState("");
   const [found, setFound] = useState(false);
-  // const [loading, setloading] = useState(false);
-
-  // useEffect(() => {
-  //   setloading(true);
-  //   setTimeout(() => {
-  //     setloading(false);
-  //   }, 5000);
-  // }, []);
-
-  useEffect(()=>{
-    setCity("")
-  })
+  const [apierror, setApierror] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const fetchWeather = async (CurrCity) => {
-    // e.preventDefault();
-    try {
-      const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${CurrCity}&appid=${API_KEY}`
-      );
-      setWeather(response.data);
-
-      console.log(response.data);
-      setFound(true);
-    } catch {
-      setFound(false);
+    if (CurrCity) {
+      setLoading(true);
+      try {
+        const response = await axios.get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${CurrCity}&appid=${API_KEY}`
+        );
+        setWeather(response.data);
+        setFound(true);
+        setApierror(false);
+      } catch {
+        setApierror(true);
+        setFound(false);
+      }
+      setLoading(false);
     }
   };
 
@@ -43,17 +37,32 @@ function App() {
     <Container>
       <AppLabel>Weather App</AppLabel>
       {weather && found ? (
-        <WeatherInfo weather={weather} setFound={setFound} />
+        <WeatherInfo
+          weather={weather}
+          setFound={setFound}
+          BackClick={() => {
+            setCity("");
+          }}
+        />
+      ) : apierror && city.length > 0 ? (
+        <Error404 setApierror={setApierror} />
       ) : (
         <>
           <CityComponent
-            setCity={setCity}
+            setCity={(e) => {
+              setCity(e);
+            }}
             city={city}
             fetchWeather={fetchWeather}
             weather={weather}
+            loading={loading}
           />
           <div>or</div>
-          <CurrentLocation setCity={setCity} setFound={setFound} fetchWeather={fetchWeather}/>
+          <CurrentLocation
+            setCity={setCity}
+            setFound={setFound}
+            fetchWeather={fetchWeather}
+          />
         </>
       )}
     </Container>
@@ -70,7 +79,7 @@ const Container = styled.div`
   padding: 20px 10px;
   border-radius: 4px;
   width: 380px;
-  background-color: #f8f8ff;
+  background-color: white;
   font-family: "DM Sans", sans-serif;
 
   > div {
@@ -79,7 +88,7 @@ const Container = styled.div`
 `;
 
 const AppLabel = styled.span`
-  color: blue;
+  color: rgb(65, 168, 241);
   font-size: 18px;
   font-weight: bold;
   margin-bottom: -22px;

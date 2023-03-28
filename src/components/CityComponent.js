@@ -1,18 +1,23 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-import { FiSearch } from "react-icons/fi";
+import styled, { keyframes } from "styled-components";
+import { FiCommand } from "react-icons/fi";
+import "./style.css";
 
 const CityComponent = (props) => {
-  const { setCity, fetchWeather, city, weather } = props;
+  const { setCity, fetchWeather, city, loading } = props;
 
-  // const filterData=setWeather.filter((item)=>{
-  //   return item.name.toLowerCase().includes(setCity.toLowerCase());
-  // })
   return (
     <>
       <WeatherLogo src="https://www.freeiconspng.com/thumbs/weather-icon-png/weather-icon-png-25.png"></WeatherLogo>
-      <CityLabel>Find Weather Of Your City</CityLabel>
-      <SearchBox onSubmit={()=>fetchWeather(city)}>
+      <CityLabel>
+        {loading ? `finding weather of ${city} ` : "Find Weather Of Your City"}
+      </CityLabel>
+      <SearchBox
+        onSubmit={(e) => {
+          e.preventDefault();
+          fetchWeather(city);
+        }}
+      >
         <input
           type="text"
           placeholder="city"
@@ -20,18 +25,9 @@ const CityComponent = (props) => {
           onChange={(e) => setCity(e.target.value)}
         />
         <button type="submit">
-          <FiSearch />
+          <FiCommand className={loading ? "loading-icon" : ""} />
         </button>
       </SearchBox>
-      {/* <DropDown>
-        {!setCity
-          ? "data not found"
-          : weather.map((item) => {
-              return <DropDownRow>
-
-              </DropDownRow>;
-            })}
-      </DropDown> */}
     </>
   );
 };
@@ -50,6 +46,14 @@ const CityLabel = styled.span`
   font-weight: bold;
 `;
 
+const animate = keyframes`
+0% {
+  transform: rotate(0deg);
+}
+100% {
+  transform: rotate(720deg);
+}
+`;
 const SearchBox = styled.form`
   display: flex;
   flex-direction: row;
@@ -59,7 +63,6 @@ const SearchBox = styled.form`
   margin: 12px auto;
   border: black solid 2px;
   border-radius: 2px;
-
   & input {
     padding: 10px;
     font-size: 14px;
@@ -67,18 +70,12 @@ const SearchBox = styled.form`
     outline: none;
     font-weight: bold;
   }
-
   & button {
     padding: 10px;
     font-size: 18px;
     border: none;
-    outline: none;
     color: white;
     background-color: black;
     cursor: pointer;
   }
 `;
-
-const DropDown = styled.div``;
-
-const DropDownRow = styled.div``;
