@@ -9,7 +9,7 @@ Display the weather condition icon.\
 Display the location name and country.\
 Display the current date and time for the location.\
 Display the humidity, wind speed and pressure for the location.\
-Ability to search for a new location and update the weather data accordingly.\
+Ability to search for a new location and update the weather data accordingly .\
 ## How to Use
 To use the weather app, follow these steps:
 
