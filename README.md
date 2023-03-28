@@ -18,7 +18,7 @@ Install the dependencies by running npm install.\
 Start the app by running npm start.\
 Enter a location in the search bar and click the search button or press enter.\
 The weather data for the location will be displayed.\
-##Technologies Used
+## Technologies Used
 This weather app was built using the following technologies:
 
 React.\
