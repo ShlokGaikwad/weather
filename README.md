@@ -25,4 +25,4 @@ Axios.\
 OpenWeatherMap API.\
 Styled Component.
 ## Credits
-This weather app was built by 'Shlok Gaikwad`. It was created as part of a coding challenge 'HootBoard`.
+This weather app was built by `Shlok Gaikwad`. It was created as part of a coding challenge `HootBoard`.
