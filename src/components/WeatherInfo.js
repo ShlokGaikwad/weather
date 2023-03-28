@@ -6,7 +6,6 @@ import { BiArrowBack } from "react-icons/bi";
 
 const WeatherInfo = (props) => {
   const { weather, setFound, BackClick } = props;
-  // console.log(weather);
   return (
     <>
       <Back

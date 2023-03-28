@@ -23,12 +23,10 @@ const CurrentLocation = ({ setCity, setFound, fetchWeather }) => {
       const response = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?lat=${location.coordinates.lat}&lon=${location.coordinates.lng}&appid=${API_KEY}`
       );
-      console.log(response.data);
       fetchWeather(response.data.name);
       setCity(response.data.name);
       setFound(true);
     } catch {
-      console.log("error");
       setFound(false);
     }
   };
