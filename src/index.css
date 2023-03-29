@@ -2,6 +2,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 50rem;
   background:rgb(65, 168, 241);
 }

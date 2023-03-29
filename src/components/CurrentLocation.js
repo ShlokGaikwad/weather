@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 const API_KEY = "13ec29720fa55c2c114c53a3a9694387";
-const base = "https://api.openweathermap.org/data/2.5/";
 const CurrentLocation = ({ setCity, setFound, fetchWeather }) => {
   const [location, setLocation] = useState({
     loaded: false,
@@ -48,7 +47,7 @@ const CurrentLocation = ({ setCity, setFound, fetchWeather }) => {
   return (
     <>
       <Button onClick={(e) => fetchWeatherViaLocation()}>
-        Get Device Location{" "}
+        Get Device Location
       </Button>
     </>
   );
@@ -64,5 +63,5 @@ const Button = styled.button`
   color: white;
   background-color: black;
   cursor: pointer;
-  width: 66%;
+  width: 250px;
 `;

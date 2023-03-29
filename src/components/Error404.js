@@ -13,7 +13,7 @@ const Error404 = (props) => {
       >
         <BiArrowBack />
       </Back>
-      <Message>Data Not Found !!!</Message>
+      <Message> city not found !!!</Message>
     </Container>
   );
 };

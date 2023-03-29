@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import styled, { keyframes } from "styled-components";
-import { FiCommand } from "react-icons/fi";
+import React from "react";
+import styled from "styled-components";
+import { BsSearch } from "react-icons/bs";
+import { ImSpinner3 } from "react-icons/im";
 import "./style.css";
 
 const CityComponent = (props) => {
@@ -25,7 +26,7 @@ const CityComponent = (props) => {
           onChange={(e) => setCity(e.target.value)}
         />
         <button type="submit">
-          <FiCommand className={loading ? "loading-icon" : ""} />
+          {!loading ? <BsSearch /> : <ImSpinner3 className="loading-icon" />}
         </button>
       </SearchBox>
     </>
@@ -46,14 +47,6 @@ const CityLabel = styled.span`
   font-weight: bold;
 `;
 
-const animate = keyframes`
-0% {
-  transform: rotate(0deg);
-}
-100% {
-  transform: rotate(720deg);
-}
-`;
 const SearchBox = styled.form`
   display: flex;
   flex-direction: row;

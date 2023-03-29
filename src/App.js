@@ -78,7 +78,7 @@ const Container = styled.div`
   margin: auto;
   align-items: center;
   box-shadow: 0 3px 6px 0 #555;
-  padding: 20px 10px;
+  padding: 40px 20px;
   border-radius: 4px;
   width: 380px;
   background-color: white;
