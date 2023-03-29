@@ -2,6 +2,9 @@
 
 This is a simple weather application that displays the current weather conditions for a given location. It retrieves weather data from the OpenWeatherMap API and displays it in a user-friendly format.
 
+## Live Link
+[https://resplendent-speculoos-8a58fe.netlify.app/](https://resplendent-speculoos-8a58fe.netlify.app/) 
+
 ## Features
 Display current weather conditions for a given location.\
 Display the temperature in Celsius or Fahrenheit.\
