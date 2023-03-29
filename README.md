@@ -7,7 +7,7 @@ This is a simple weather application that displays the current weather condition
 
 ## Features
 Display current weather conditions for a given location.\
-Display the temperature in Celsius or Fahrenheit.\
+Display the temperature in Celsius.\
 Display the weather condition icon.\
 Display the location name and country.\
 Display the humidity,feels like, wind speed and pressure for the location.\
@@ -19,7 +19,7 @@ Clone the repository to your local machine.\
 Install the dependencies by running npm install.\
 Start the app by running npm start.\
 Enter a location in the search bar and click the search button or press enter.\
-The weather data for the location will be displayed.\
+The weather data for the location will be displayed.
 ## Technologies Used
 This weather app was built using the following technologies:
 
